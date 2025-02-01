@@ -2,10 +2,24 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { InformationModule } from './information/information.module';
-import { CloudinaryService } from './utils/cloudinary.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [InformationModule],
+  imports: [InformationModule, TypeOrmModule.forRoot(
+    {
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'example',
+      password: 'example',
+      database: 'aboutyou',
+      autoLoadEntities: true,
+      synchronize: true,
+      extra: {
+        createDatabaseIfNotExist: true
+      }
+    }
+  )],
   controllers: [AppController],
   providers: [AppService],
 })
