@@ -1,0 +1,21 @@
+services:
+
+  db:
+    image: postgres
+    restart: always
+    ports:	
+      - 5432:5432
+    volumes:
+      - polls_pg_data:/bitnami/postgresql
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  polls_pg_data:
