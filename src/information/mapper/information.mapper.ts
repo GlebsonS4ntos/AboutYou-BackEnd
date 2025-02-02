@@ -9,6 +9,9 @@ export class InformationMapper {
     }
 
     createInformationDtoToInformation(createInformationDto: CreateInformationDto, imageurl: string): Information {
-        return plainToInstance(Information, { ...createInformationDto, imageUrl: imageurl}, { excludeExtraneousValues: true });
+        console.log(createInformationDto);
+        const info = plainToInstance(Information, { ...createInformationDto, imageUrl: imageurl});
+        console.log(info);
+        return info;
     }
 }
