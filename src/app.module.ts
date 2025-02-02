@@ -14,12 +14,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'example',
       database: 'aboutyou',
       autoLoadEntities: true,
-      synchronize: true,
-      extra: {
-        createDatabaseIfNotExist: true
-      }
-    }
-  )],
+      synchronize: true
+    },
+  ),
+  InformationModule
+],
   controllers: [AppController],
   providers: [AppService],
 })
