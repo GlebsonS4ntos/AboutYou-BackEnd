@@ -3,16 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { InformationModule } from './information/information.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as dotenv from 'dotenv';
+
+dotenv.config(); 
 
 @Module({
   imports: [InformationModule, TypeOrmModule.forRoot(
     {
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'example',
-      password: 'example',
-      database: 'aboutyou',
+      url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: true
     },
